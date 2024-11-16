@@ -1,0 +1,9 @@
+name: workflow1
+on: [push]
+
+jobs:
+  run-shell-commands:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo String
+        run: echo "Hello World"
