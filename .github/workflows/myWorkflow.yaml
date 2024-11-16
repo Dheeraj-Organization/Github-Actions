@@ -9,3 +9,17 @@ jobs:
         run: | 
           echo "Hello World"
           echo "Hello Dheeraj"
+  parallel-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Printing Working directory
+        run: |
+          pwd
+          echo "$GITHUB_SHA"
+          echo "$GITHUB_REPOSITORY"
+  dependent-job:
+    runs-on: ubuntu-latest
+    needs: run-shell-commands
+    steps:
+      - name: Echo
+        run: echo "Dependent Job"
