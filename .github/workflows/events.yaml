@@ -1,0 +1,11 @@
+name: Events-wf
+on: [push, pull_request, issues]
+jobs:
+    checkout-Test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              run: |
+                echo "$GITHUB_SHA"
+                echo "$GITHUB_REPOSITORY"
+            - uses: actions/checkout@v3 
