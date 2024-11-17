@@ -1,5 +1,6 @@
 name: Expressions & if-key
 on: [push, workflow_dispatch]
+run-name: "Expressions,Context run via event ${{github.event_name}}"
 jobs:
  Expressions-and-Context-Utilization:
     runs-on: ubuntu-latest
