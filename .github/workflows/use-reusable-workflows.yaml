@@ -1,0 +1,22 @@
+name: Calling Reusable WF
+on:
+ workflow_call: 
+    inputs:
+       name:
+        description: "Input1"
+        type: string
+        default: "Dheeraj"
+        required: true
+jobs:
+    Calliing-Reusable-Workflow:
+        uses: Dheeraj-Organization/Workflows/.github/workflows/reusable.yaml@main
+        with:
+            name: ${{inputs.name}}
+
+
+    Log-Info:
+        runs-on: ubuntu-latest
+        steps:
+         - run: echo ${{inputs.name}}
+
+   
