@@ -7,24 +7,26 @@ on:
                 default: "14,15,16"
                 type: string
 jobs:
- Prepare-Matrix:
+  Prepare-Matrix:
     outputs:
-      matrix-arrays: ${{ steps.step1.outputs.result}}
+      matrix-arrays: ${{ steps.step1.outputs.result }}
     runs-on: ubuntu-latest
     steps:
-        - uses: actions/github-script@v6
-          id: step1
-          with: 
-            script: "return {node-versions: context.payload.inputs['node-versions'].split(',')}"
-            result-encoding: json
+      - uses: actions/github-script@v6
+        id: step1
+        with:
+          script: |
+            return { node_versions: context.payload.inputs['node-versions'].split(',') }
+          result-encoding: json
+
             
     
- One-D-Matrix:
+  One-D-Matrix:
     needs: Prepare-Matrix
     strategy:
       max-parallel: 1
       matrix:
-        node-version: ${{toJson(needs.Prepare-Matrix.outputs.matrix-arrays).node-versions}}
+        node-version: ${{toJson(needs.Prepare-Matrix.outputs.matrix-arrays).node_versions}}
     runs-on: ubuntu-latest
     steps:
     - name: 1-D
