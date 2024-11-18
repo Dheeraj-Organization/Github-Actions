@@ -6,7 +6,9 @@ on:
             description: Environments
             type: environment
             required: true
-concurrency: ${{github.workflow}}-${{inputs.Environment}}
+concurrency: 
+    group: ${{github.workflow}}-${{inputs.Environment}}
+    cancel-in-progress: true
 jobs:
     Concurrent-Running:
         runs-on: ubuntu-latest
