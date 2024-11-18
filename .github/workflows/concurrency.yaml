@@ -1,0 +1,16 @@
+name: concurrency
+on:
+ workflow_dispatch: 
+    inputs:
+        Environment:
+            description: Environments
+            type: environment
+            required: true
+concurrency: ${{github.workflow}}-${{inputs.Environment}}
+jobs:
+    Concurrent-Running:
+        runs-on: ubuntu-latest
+        steps:
+          - run: echo "Hello"
+
+       
