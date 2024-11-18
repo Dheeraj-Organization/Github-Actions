@@ -1,0 +1,16 @@
+name: Matrix
+on: [pull_request]
+jobs:
+ One-D-Matrix:
+    strategy:
+      matrix:
+        node-version: [14,15,16]
+    runs-on: ubuntu-latest
+    steps:
+    - name: 1-D
+      run: |
+        node -v
+    - uses: actions/setup-node@v3
+      with:
+        node-version: ${{matrix.node-version}}
+    - run: node -v
