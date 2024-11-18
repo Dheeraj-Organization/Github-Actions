@@ -10,7 +10,7 @@ on:
 jobs:
   Prepare-Matrix:
     outputs:
-      matrix-arrays: ${{ steps.step1.outputs.node_versions }}
+      matrix-arrays: ${{ steps.step1.outputs.result }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@v6
@@ -24,7 +24,7 @@ jobs:
     needs: Prepare-Matrix
     strategy:
       matrix:
-        node-version: ${{ fromJson(needs.Prepare-Matrix.outputs['matrix-arrays']) }}
+        node-version: ${{ fromJson(needs.Prepare-Matrix.outputs.matrix-arrays).node_versions }}
     runs-on: ubuntu-latest
     steps:
       - name: 1-D
