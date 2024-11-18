@@ -3,6 +3,7 @@ on: [pull_request]
 jobs:
  One-D-Matrix:
     strategy:
+      max-parallel: 1
       matrix:
         node-version: [14,15,16]
     runs-on: ubuntu-latest
