@@ -1,15 +1,16 @@
-name: Dyanamic Matrix
+name: Dynamic Matrix
 on:
-    workflow_dispatch: 
-        inputs:
-            node-versions:
-                description: "Node versions"
-                default: "14,15,16"
-                type: string
+  workflow_dispatch:
+    inputs:
+      node-versions:
+        description: "Node versions"
+        default: "14,15,16"
+        type: string
+
 jobs:
   Prepare-Matrix:
     outputs:
-      matrix-arrays: ${{ steps.step1.outputs.result }}
+      matrix-arrays: ${{ steps.step1.outputs.node_versions }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@v6
@@ -19,20 +20,16 @@ jobs:
             return { node_versions: context.payload.inputs['node-versions'].split(',') }
           result-encoding: json
 
-            
-    
   One-D-Matrix:
     needs: Prepare-Matrix
     strategy:
-      max-parallel: 1
       matrix:
-        node-version: ${{toJson(needs.Prepare-Matrix.outputs.matrix-arrays).node_versions}}
+        node-version: ${{ fromJson(needs.Prepare-Matrix.outputs['matrix-arrays']) }}
     runs-on: ubuntu-latest
     steps:
-    - name: 1-D
-      run: |
-        node -v
-    - uses: actions/setup-node@v3
-      with:
-        node-version: ${{matrix.node-version}}
-    - run: node -v
+      - name: 1-D
+        run: node -v
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: node -v
