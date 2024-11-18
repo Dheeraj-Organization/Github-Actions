@@ -1,0 +1,15 @@
+name: Reusable-WF- Within Same Repo
+on:
+    workflow_call:
+     outputs:
+         date:
+            description: "Date value"
+            value: ${{jobs.creating-output.outputs.date }}
+jobs:
+    creating-output:
+        runs-on: ubuntu-latest
+        outputs:
+            date: ${{ steps.date-step.outputs.date }}
+        steps:
+            - run: echo "date=$(date)" >> $GITHUB_OUTPUT
+              id: date-step

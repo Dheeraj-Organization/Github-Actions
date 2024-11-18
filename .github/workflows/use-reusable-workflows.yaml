@@ -12,6 +12,13 @@ jobs:
         uses: Dheeraj-Organization/Workflows/.github/workflows/reusable.yaml@main
         with:
             name: ${{inputs.name}}
+    Calliing-Reusable-Workflow-from-same-repo:
+        uses: ./.github/workflows/reusable-wf.yaml
+    Reusing-The-output-from-reusable-wf:
+        needs: Calliing-Reusable-Workflow-from-same-repo
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo ${{needs.Calliing-Reusable-Workflow-from-same-repo.outputs.date}}
 
 
    
