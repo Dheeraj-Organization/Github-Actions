@@ -1,6 +1,6 @@
 name: Calling Reusable WF
 on:
- workflow_call: 
+ workflow_dispatch:  
     inputs:
        name:
         description: "Input1"
@@ -13,10 +13,5 @@ jobs:
         with:
             name: ${{inputs.name}}
 
-
-    Log-Info:
-        runs-on: ubuntu-latest
-        steps:
-         - run: echo ${{inputs.name}}
 
    
