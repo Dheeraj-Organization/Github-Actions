@@ -1,0 +1,10 @@
+name: Catches-demo
+on: [workflow_dispatch]
+jobs:
+  Dependency:
+    runs-on: ubuntu-latest
+    steps:
+     - uses: actions/checkout@v3
+     - name: Install npm
+       run: npm install
+
