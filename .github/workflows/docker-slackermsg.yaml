@@ -1,0 +1,15 @@
+name: Slacker-MSG-Notify
+on: [workflow_dispatch]
+jobs:
+  Notify-Slack-Msg:
+    runs-on: ubuntu-latest
+    container: 
+        image: node:23-alpine3.19
+    steps:
+        - name: send-slacker-msg
+          uses: docker://technosophos/slack-notify
+          env:
+            SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK}}
+            SLACK_TITLE: "From Github-Actions"
+            SLACK_MESSAGE: "Actor: ${{github.actor}}, Event NAme: ${{github.event_name}}"
+            SLACK_COLOR: "#723fc4"
