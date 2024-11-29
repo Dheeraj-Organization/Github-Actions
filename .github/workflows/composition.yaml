@@ -1,0 +1,16 @@
+name: Composition-test
+on: [workflow_dispatch]
+jobs:
+  Random-joke-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: joke-creation
+        id: joke
+        uses: .\.github\workflows\actions\slack-msg
+        with:
+          slack_username: Dheeraj
+          upload_joke: true
+      - name: Display-joke
+        run: echo ${{steps.joke.outputs.joke}}
+      
