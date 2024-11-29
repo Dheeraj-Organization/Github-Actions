@@ -7,7 +7,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: joke-creation
         id: joke
-        uses: .\.github\workflows\actions\slack-msg
+        uses: ./.github/workflows/actions/slack-msg
         with:
           slack_username: Dheeraj
           upload_joke: true
