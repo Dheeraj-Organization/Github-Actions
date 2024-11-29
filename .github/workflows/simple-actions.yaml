@@ -1,0 +1,14 @@
+name: Simple-Actions
+on: [workflow_dispatch]
+jobs:
+    Using-Private-Actions:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - name: Simple-JS-Action
+              id: greet  
+              uses: ./.github/workflows/actions/hello
+              with:
+                who_to_greet: Ali                
+            - name: Log Greeting Time
+              run: echo "${{steps.greet.outputs.time}}"
