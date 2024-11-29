@@ -6,8 +6,6 @@ inputs:
     description: "Slack Username"
   upload_joke:
     description: "Upload Joke as an Artifact?"
-  slack_webhook:
-    description: "Slack Webhook"
 outputs:
   joke:
     description: The generated joke
