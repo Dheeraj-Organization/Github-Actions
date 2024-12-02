@@ -12,5 +12,9 @@ jobs:
           slack_username: Dheeraj
           upload_joke: true
       - name: Display-joke
-        run: echo ${{steps.joke.outputs.joke}}
+        run: |
+             echo ${{steps.joke.outputs.joke}}
+             echo ${{github.workflow}}
+             echo ${{github.run_id}}
+             echo ${{github.run_number}}
       
