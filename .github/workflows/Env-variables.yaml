@@ -8,8 +8,8 @@ on:
           required: true
           type: choice
           options:
-            - production
-            - staging    
+            - Production
+            - stagging    
 jobs:  
 
   Echo-Env-Variables:
