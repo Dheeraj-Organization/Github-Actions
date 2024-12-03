@@ -15,10 +15,8 @@ jobs:
   Echo-Env-Variables:
     runs-on: ubuntu-latest
     environment: ${{inputs.env}}
-    env: 
-        ENV_value : ${{vars.ENV_LEVEL_VAR}}
     steps:
     - name: Echo
       run: |
        echo "Environment: ${{ github.event.inputs.env }}"
-       echo $ENV_value
+       echo ${{vars.ENV_LEVEL_VAR}}
