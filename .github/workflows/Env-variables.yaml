@@ -3,12 +3,22 @@ name: ENV-variables-Test
 on: 
   workflow_dispatch:
     inputs:
-      environment:
-        type: environment     
+        env:
+          description: 'Select environment'
+          required: true
+          type: choice
+          options:
+            - production
+            - staging    
 jobs:  
 
   Echo-Env-Variables:
     runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.env }}
     steps:
     - name: Echo
-      run: echo ${{vars.ENV_LEVEL_VAR}}
+      run: |
+       echo "Environment: ${{ github.event.inputs.env }}"
+       echo ${{vars.ENV_LEVEL_VAR}}
+    env:
+          RELEASE_BRANCH: ${{ vars.ENV_LEVEL_VAR}}
