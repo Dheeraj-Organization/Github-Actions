@@ -14,7 +14,6 @@ jobs:
 
   Echo-Env-Variables:
     runs-on: ubuntu-latest
-    environment: ${{inputs.env}}
     steps:
     - name: Echo
       run: |
