@@ -1,0 +1,14 @@
+name: ENV-variables-Test
+
+on: 
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: environment     
+jobs:  
+
+  Echo-Env-Variables:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Echo
+      run: echo ${{env.ENV_LEVEL_VAR}}
