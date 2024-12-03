@@ -11,4 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Echo
-      run: echo ${{inputs.environment.ENV_LEVEL_VAR}}
+      run: echo ${{vars.ENV_LEVEL_VAR}}
