@@ -20,5 +20,3 @@ jobs:
       run: |
        echo "Environment: ${{ github.event.inputs.env }}"
        echo ${{vars.ENV_LEVEL_VAR}}
-    env:
-          RELEASE_BRANCH: ${{ vars.ENV_LEVEL_VAR}}
